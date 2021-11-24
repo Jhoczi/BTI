@@ -1,30 +1,28 @@
-import string
-
-alphabet = string.ascii_lowercase
 
 def CaesarEncryption(text, KEY):
     encrypted = ""
     for letter in text:
-        if ord(letter) > 122 - KEY:
-            encrypted += chr(ord(letter) + KEY - 26)
+        letter = str.lower(letter)
+        newValue = (ord(letter) -97 + KEY) % 26
+        if (ord(letter) == 32):
+            encrypted += " "
         else:
-            encrypted += chr(ord(letter) + KEY)
+            encrypted += chr(newValue + 97)
     return encrypted
 
-def CaeserDecoder(text, KEY):
+def CaeserDecoder(text,KEY):
     decoded = ""
     for letter in text:
-        x = ord(letter)
-        if (ord(letter))
-        if (ord(letter) + KEY - 26) < 122:
-            print(f'{letter}')
-            decoded += chr(ord(letter) - KEY + 26)
+        letter = str.lower(letter)
+        newValue = (ord(letter) - 97 - KEY) % 26
+        if (ord(letter) == 32):
+            decoded += " "
         else:
-            decoded += chr(ord(letter) - KEY)
+            decoded += chr(newValue + 97)
     return decoded
 
-KEY = 1
-text = "az"
+KEY = 13
+text = "testowo zaszyfrowane zdanie"
 print(f'Teskt:\n{text}')
 encrypted = CaesarEncryption(text,KEY)
 print(f'Zaszyfrowany:\n{encrypted}')

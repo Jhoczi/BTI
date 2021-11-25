@@ -19,7 +19,6 @@ def VigenereEncryption(text,key):
     return encrypted
 
 def VigenereDecryption(text,key):
-    nonAlpha = 0
     decoded = ""
     for i in range(len(text)):
         if (ord(text[i]) == 32):

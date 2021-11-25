@@ -4,40 +4,41 @@ def GenerateVigenereKey(string, key):
         return key
     else:
         for i in range( len(string) - len(key)):
-            key.append(key[i % len(key)])
-    return "".join(key)
+            key.append(key[i % len(key)].upper())
+    return ''.join(key)
 
 def VigenereEncryption(text,key):
-    nonAlpha = 0
     encrypted = ""
     for i in range(len(text)):
-        if (text[i] == " "):
-            encrypted +=" "
-            nonAlpha += 1
-        else:
-            x = (ord(text[i]) + ord(key[i]) - nonAlpha) % 26
-            x += ord('A')
-            encrypted += chr(x)
+        if (ord(text[i]) == 32):
+            encrypted += " "
+            continue
+        x = (ord(text[i].upper()) + ord(key[i])) % 26
+        x += ord('A')
+        encrypted += chr(x)
     return encrypted
 
 def VigenereDecryption(text,key):
     nonAlpha = 0
     decoded = ""
     for i in range(len(text)):
-        if (text[i] == " "):
+        if (ord(text[i]) == 32):
             decoded += " "
-            nonAlpha += 1
-        else:
-            x = (ord(text[i]) - ord(key[i]) + 26 - nonAlpha) % 26
-            x += ord('A')
-            decoded += chr(x)
+            continue
+        x = (ord(text[i]) - ord(key[i]) + 26) % 26
+        x += ord('A')
+        decoded += chr(x)
     return decoded
 
-text = "filip to hultaj"
-keyword = "AYUSH"
+text = "siema siema siema"
+keyword = "AZ"
+
 
 key = GenerateVigenereKey(text,keyword)
 encryptedText = VigenereEncryption(text,key)
-print(encryptedText)
 decoded = VigenereDecryption(encryptedText, key)
-print(decoded)
+print(f'Tekst:{text}')
+print(f'Slowo kluczowe:{keyword}')
+print(f'Klucz:{key}')
+print(f'Zakodowany: {encryptedText}')
+print(f'Odkodowany: {decoded}')

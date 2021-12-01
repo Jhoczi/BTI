@@ -39,3 +39,4 @@ decryptedText = AffineDecryption(encryptedText,key)
 print(f'Text: {text}')
 print(f'Encrypted text: {encryptedText}')
 print(f'Decrypted text: {decryptedText}')
+

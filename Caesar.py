@@ -28,3 +28,4 @@ encrypted = CaesarEncryption(text,KEY)
 print(f'Zaszyfrowany:\n{encrypted}')
 decoded = CaeserDecoder(encrypted,KEY)
 print(f'Odszyfrowany:\n{decoded}')
+

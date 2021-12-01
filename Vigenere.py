@@ -29,9 +29,8 @@ def VigenereDecryption(text,key):
         decoded += chr(x)
     return decoded
 
-text = "siema siema siema"
-keyword = "AZ"
-
+text = "HOCZEK"
+keyword = "JAKUB"
 
 key = GenerateVigenereKey(text,keyword)
 encryptedText = VigenereEncryption(text,key)
@@ -41,3 +40,4 @@ print(f'Slowo kluczowe:{keyword}')
 print(f'Klucz:{key}')
 print(f'Zakodowany: {encryptedText}')
 print(f'Odkodowany: {decoded}')
+

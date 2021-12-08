@@ -17,7 +17,7 @@ def ModInv(a, m):
 def AffineEncryption(text, KEY):
     result = []
     for t in text.upper().replace(' ', ''):
-        coded = (( key[0]*(ord(t) - ord('A')) + key[1] ) % 26) + ord('A')
+        coded = (( key[0]*(ord(t) - ord('A')) + key[1] ) % 32) + ord('A')
         result.append( chr(coded))
     return ''.join(result)
 
@@ -25,13 +25,13 @@ def AffineEncryption(text, KEY):
 def AffineDecryption(text,KEY):
     result = []
     for c in text:
-        decoded = (( ModInv(key[0], 26)*(ord(c) - ord('A') - key[1])) % 26) + ord('A')
+        decoded = (( ModInv(key[0], 32)*(ord(c) - ord('A') - key[1])) % 32) + ord('A')
         result.append(chr(decoded))
     return ''.join(result)
 
 
 text = "Moj przykladowy test"
-key = [17,20]
+key = [4,8]
 
 encryptedText = AffineEncryption(text,key)
 decryptedText = AffineDecryption(encryptedText,key)
